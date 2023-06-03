@@ -1,18 +1,20 @@
-import qrcode
+import numpy as np
+from PIL import Image
 
 from consts import *
+from helper.qrgenerator import QrGenerator
+from helper.qrmixer import QrMixer
 
-qr = qrcode.QRCode(
-    version=1,
-    error_correction=qrcode.constants.ERROR_CORRECT_L,
-    box_size=1,
-    border=0,
-)
-qr.add_data(FLAG_TEXT)
-qr.make(fit=True)
+# Create not encoded qr
+QrGenerator.generate(RESULT_FILE_NAME, FLAG_TEXT)
 
-img = qr.make_image(fill_color="black", back_color="white")
+# Get image as array of RGB pixels
+image = Image.open(RESULT_FILE_NAME).convert('RGB')
+image = np.asarray(image)
 
-type(img)  # qrcode.image.pil.PilImage
+# Encode and add noise to our qr image
+new_array = QrMixer.mix(KEY_COLORS_COUNT, NOISE_COLORS_COUNT, KEY_COLORS, NOISE_COLORS, image)
 
-img.save(RESULT_FILE_NAME)
+# Create encoded qr
+new_image = Image.fromarray(new_array)
+new_image.save(ENCODED_FILE_NAME)
