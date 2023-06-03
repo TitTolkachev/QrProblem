@@ -8,30 +8,24 @@ RESULT_FILE_NAME = "default.png"
 # Set some unusual file name  without extension :)
 ENCODED_FILE_NAME = "encrypted.png"
 
-# Difficulty Level
-# 1 - not encoded
-# 10 - hard encoded
-KEY_COLORS_COUNT = 4
-NOISE_COLORS_COUNT = 2
+# Difficulty Level (From 1 to Max Colors Count)
+KEY_COLORS_COUNT = 5
+NOISE_COLORS_COUNT = 5
 
 # Key colors
 KEY_COLORS = [
     [255, 0, 0],
-    [100, 100, 0],
-    [0, 100, 100],
-    [28, 100, 28],
-    [28, 100, 228],
-    [228, 100, 28],
-    [228, 28, 28],
-    [56, 65, 56],
-    [88, 48, 200],
-    [200, 200, 100],
+    [0, 19, 225],
+    [0, 255, 0],
+    [255, 181, 0],
+    [128, 128, 128],
 ]
 
 # Noise colors
 NOISE_COLORS = [
     [144, 54, 77],
-    [255, 0, 0],
-    [0, 255, 0],
-    [0, 0, 255]
+    [225, 0, 218],
+    [4, 214, 225],
+    [225, 118, 4],
+    [26, 177, 96],
 ]
